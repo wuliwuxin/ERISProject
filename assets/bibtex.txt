@@ -1,0 +1,6 @@
+@article{wu2025eris,
+  title={ERIS: An Energy-Guided Feature Disentanglement Framework for Out-of-Distribution Time Series Classification},
+  author={Wu, Xin and Teng, Fei and Zhang, Ji and Li, Xingwang and Liang, Yuxuan},
+  journal={arXiv preprint arXiv:2508.14134},
+  year={2025}
+}

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Include Bootstrap's JS-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <!-- import MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <!-- Custom JS for this template -->
+    <script src="js/copyText.js"></script>
+
+    <!--Include the icon fonts stylesheet-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <!--Include Bootstrap's CSS-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <!--Local Icon-->
+    <link rel="stylesheet" href="icons/style.css" />
+    <!--Local Fonts-->
+    <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css" />
+    <link rel="stylesheet" href="fonts/segoe-print/stylesheet.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="style.css" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Website Title -->
+    <title>
+      ERIS
+    </title>
+    <!-- The description that appears when you share the link -->
+    <meta
+      property="og:description"
+      content="ERIS"
+    />
+    <!-- Used to display page descriptions in search results -->
+    <meta
+      name="description"
+      content="Out-of-distribution, Representation learning, Energy-based method, Time series classification"
+    />
+    <!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <header class="container">
+      <hr />
+      <!-- Paper Title -->
+      <div class="container text-center">
+        <span class="title-font x-gradient-font">
+        ERIS: An Energy-Guided Feature Disentanglement Framework for   <br />
+        Out-of-Distribution Time Series Classification
+        </span>
+      </div>
+      <hr />
+      <!-- author list -->
+      <div class="container author text-center">
+        <!-- authors -->
+        <div class="row gy-2">
+          <div class="col-12 col-md-2">
+            <a class="link" href="https://wuliwuxin.github.io">Xin Wu</a
+            ><sup>1</sup>
+          </div>
+          <div class="col-12 col-md-2">
+            <a
+              class="link"
+              href="https://scholar.google.com.hk/citations?hl=zh-CN&user=5CVB6eYAAAAJ&view_op=list_works&sortby=pubdate"
+              >Fei Teng<sup>*</sup></a>
+            ><sup>1</sup>
+          </div>
+        <div class="col-12 col-md-2">
+            <a
+              class="link"
+              href="https://jimzai.github.io/"
+              >Ji Zhang</a>
+              <sup>1</sup>
+          </div>
+          <div class="col-12 col-md-2">
+            <a
+              class="link"
+              href="https://scholar.google.com.hk/citations?hl=zh-CN&user=EnmTzFQAAAAJ"
+              >Xingwang Li</a>
+              <sup>1</sup>
+          </div>
+            <div class="col-12 col-md-2">
+            <a
+              class="link"
+              href="https://yuxuanliang.com/"
+              >Yuxuan Liang</a>
+              <sup>2</sup>
+          </div>
+        </div>
+        <!-- author organization -->
+        <div class="row mt-3">
+          <div class="col-12">
+            <sup>1</sup>Southwest Jiaotong University &nbsp;&nbsp;<sup>2</sup>Hong Kong University of Science and Technolog (Guangzhou)
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+          <sup>*</sup>Corresponding Author
+          </div>
+      </div>
+      </div>
+      <!-- <div class="text-center" style="margin-top: 20px">
+        <h3 style="font-weight: bold">🎉🎉🎉 Accepted by KBS 2023 🎉🎉🎉</h3>
+      </div> -->
+
+      <!-- links -->
+      <div class="text-center">
+        <div class="row justify-content-md-center" id="links">
+          <!--                <div class="col col-lg-2">-->
+          <!--                    <a id="paper" href="#">Paper</a>-->
+          <!--                </div>-->
+
+          <!-- Arxiv Link -->
+          <div class="col col-lg-2">
+            <a id="arxiv" href="https://arxiv.org/abs/2508.14134">Paper</a>
+          </div>
+          <!-- Code Link -->
+          <div class="col col-lg-2">
+            <a id="code" href="https://github.com/wuliwuxin/ERIS">Code</a>
+            <!-- <div style="margin-top: -0.5rem">(coming soon)</div> -->
+          </div>
+          <!--                <div class="col col-lg-2">-->
+          <!--                    <a id="demo" href="https://huggingface.co/datasets/xingxm/SVG-Color-Emoji-Dataset">Dataset</a>-->
+          <!--                </div>-->
+        </div>
+      </div>
+      <br />
+
+      <!-- Features -->
+      <div class="card border-0">
+        <div class="card-body x-gradient-block">
+          <h2
+            class="card-title text-center"
+            style="font-size: 2rem; margin-bottom: 1.5rem"
+          >
+            ✨ Highlights
+          </h2>
+          <hr class="body-hr" />
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <strong>Parallel Hybrid Architecture:</strong> We introduce a novel parallel hybrid architecture that combines both CNN and transformer.
+            </li>
+            <li class="mb-2">
+              <strong>Cross-Branch Interaction via IIM:</strong>
+              We incorporate the modules enable <b>cross-branch communication and facilitate the exploration of correlations between labels</b>.
+            </li>
+            <li>
+              <strong>Comprehensive Evaluation and Performance:</strong> We extensively evaluated <b>on three distinct datasets: ChestX-ray11, NIH ChestX-ray14, and our in-house TCMTD</b>.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br />
+    </header>
+    <br />
+
+    <main class="container">
+      <!-- Abstract -->
+      <div class="card border-0">
+        <div class="card-body x-gradient-block">
+          <h2 class="card-title text-center card-title-margin">Abstract</h2>
+          <!-- <p class="card-text">
+            Multilabel image classification aims to assign images to multiple possible labels. 
+            In this task, each image may be associated with multiple labels, making it more challenging 
+            than the single-label classification problems. For instance, convolutional neural 
+            networks (CNNs) have not met the performance requirement in utilizing statistical 
+            dependencies between labels in this study. Additionally, data imbalance is a common 
+            problem in machine learning that needs to be considered for multilabel medical image 
+            classification. Furthermore, the concatenation of a CNN and a transformer suffers from 
+            the disadvantage of lacking direct interaction and information exchange between the two models. 
+            To address these issues, we propose a novel hybrid deep learning model called 
+            <b style="color: #7e57c2">CTransCNN</b>.This model comprises three main components 
+            in both the CNN and transformer branches: a multilabel multihead attention enhanced 
+            feature module (<b style="color: #7e57c2">MMAEF</b>), a multibranch residual 
+            module (<b style="color: #7e57c2">MBR</b>), and an information interaction module (<b style="color: #7e57c2">IIM</b>). 
+            The MMAEF enables the exploration of implicit correlations between labels, the MBR facilitates model optimization, 
+            and the IIM enhances feature transmission and increases nonlinearity between the 
+            two branches to help accomplish the multilabel medical image classification task. 
+            We evaluated our approach using publicly available datasets, namely the <b>ChestX-ray11 and 
+            NIH ChestX-ray14, along with our self-constructed traditional Chinese medicine tongue 
+            dataset (TCMTD) </b>. Extensive multilable image classification experiments were conducted 
+            comparing our approach with excellent methods. The experimental results demonstrate that 
+            the framework we have developed exhibits strong competitiveness compared to previous research. 
+            Its robust generalization ability makes it applicable to other medical multilabel image 
+            classification tasks.
+          </p> -->
+        </div>
+      </div>
+      <br />
+
+<!-- Methodology -->
+<div class="card border-0">
+  <div class="card-body">
+      <h2 class="card-title card-title-margin">Methodology</h2>
+      <hr class="body-hr"/>
+      <div class="text-center">
+          <figure class="figure">
+              <img src="assets/model.png" class="figure-img img-fluid rounded" alt="method">
+              <!--                    <figcaption class="figure-caption">A caption for the above image.</figcaption>-->
+          </figure>
+      </div>
+      <!-- <p class="card-text">
+          The proposed approach for multilabel medical image classification consists of three 
+          main stages, The first stage is to extract the initial features using the Conv module 
+          and then send two copies of them to the transformer branch and the CNN branch, respectively. 
+          In the second stage, the transformer branch adopts the label embedding and the MSS block 
+          of the MMAEF, while the CNN branch utilizes the MBR with nested inner and outer branches. The stacking of 
+          the MMAEF and MBR is equal to the number of layers in a vanilla transformer, denoted as. 
+          We believe that our model's number of layers is on par with the original architecture, 
+          which enhances structural reusability. Additionally, the widely recognized ViT model 
+          employs the transformer architecture for computer vision tasks and also utilizes a 
+          foundational version with 12 layers. Meanwhile, the IIM consists of the C2T and the T2C 
+          components to progressively fuse the feature maps in an interactive manner. Finally, 
+          after obtaining <i>T</i> features and <i>>C</i> features from the two branches, we investigate three 
+          fusion methods for their classification: direct addition of the branch scores, w
+          eighted addition of the branch scores (with weight coefficients ranging from 0 to 1), 
+          and classification based on the concatenation of the final feature maps from the two 
+          branches. 
+      </p> -->
+  </div>
+</div>
+<br>
+
+<!-- Demo -->
+<div class="card border-0">
+  <div class="card-body">
+      <h2 class="card-title card-title-margin">Demo</h2>
+      <hr class="body-hr"/>
+          <div>
+              <img id="prompt-sweep-img" src="assets/demo.gif"  width="80%">
+          </div>
+  </div>
+  <br/>
+
+  <!-- Results -->
+  <div class="card border-0">
+    <div class="card-body">
+        <h2 class="card-title card-title-margin">More Results</h2>
+        <hr class="body-hr"/>
+
+        <!--start accordion-->
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        #1. ChestX-ray11
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/CXR11.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        #2. NIH ChestX-ray14
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/CXR14.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      #3. ChestX-Ray Ablation Result
+                  </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <figure class="figure">
+                          <img src="./assets/CXR_ab.png" class="figure-img img-fluid rounded" alt="method">
+                      </figure>
+                  </div>
+              </div>
+          </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        #4. Tongue Preprocessing
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/tongue.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      #5. Tongue Visualization
+                  </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <figure class="figure">
+                          <img src="./assets/tongue_visual.png" class="figure-img img-fluid rounded" alt="method">
+                      </figure>
+                  </div>
+              </div>
+          </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      #6. Tongue Ablation Result
+                  </button>
+              </h2>
+              <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <figure class="figure">
+                          <img src="./assets/tongue_ab.png" class="figure-img img-fluid rounded" alt="method">
+                      </figure>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+<br>
+
+      <!-- Citation -->
+      <div class="card border-0">
+        <div class="card-body">
+          <h2 class="card-title card-title-margin">Citation</h2>
+          <p id="bibtex" class="card-text" style="border: #1a1c20 1px">
+            <code>
+              @article{WU2023111030,<br />
+                &nbsp;&nbsp;title = {CTransCNN: Combining transformer and CNN in multilabel medical image classification},<br />
+                &nbsp;&nbsp;journal = {Knowledge-Based Systems},<br />
+                &nbsp;&nbsp;pages = {111030},<br />
+                &nbsp;&nbsp;year = {2023},<br />
+                &nbsp;&nbsp;issn = {0950-7051},<br />
+                &nbsp;&nbsp;doi = {https://doi.org/10.1016/j.knosys.2023.111030},<br />
+                &nbsp;&nbsp;url = {https://www.sciencedirect.com/science/article/pii/S0950705123007803},<br />
+                &nbsp;&nbsp;author = {Wu, Xin and Feng, Yue and Xu, Hong and Lin, Zhuosheng and Chen, Tao and Li, Shengke and Qiu, Shihan and Liu, Qichao and Ma, Yuangang and Zhang, Shuangsheng}<br />
+              }
+            </code>
+          </p>
+
+          <!-- Bibtex (Button trigger modal)-->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onclick="copyText()"
+          >
+            Copy BibTex
+          </button>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Bibtex
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="bibtex modal-body">Copy Success!</div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- left layout -->
+          <div class="col-12 col-md-6 text-md-start text-center">
+            <p class="footer-title mb-0">
+              ERIS
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  </body>
+</html>
