@@ -34,16 +34,20 @@
     <!--Local Fonts-->
     <link rel="stylesheet" href="fonts/avenir-next/stylesheet.css" />
     <link rel="stylesheet" href="fonts/segoe-print/stylesheet.css" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="style.css" />
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Website Title -->
-    <title>ERIS: An Energy-Guided Feature Disentanglement Framework</title>
+    <title>
+      An Energy-Guided Feature Disentanglement Framework
+    </title>
     <!-- The description that appears when you share the link -->
     <meta
       property="og:description"
-      content="Out-of-distribution, Representation learning, Energy-based method, Time series classification"
+      content="OOD and Time series classification"
     />
     <!-- Used to display page descriptions in search results -->
     <meta
@@ -52,366 +56,6 @@
     />
     <!-- favicon -->
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-
-    <style>
-      :root {
-        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        --card-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        --hover-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      }
-
-      body {
-        font-family: 'Avenir Next', sans-serif;
-        line-height: 1.6;
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-        min-height: 100vh;
-      }
-
-      /* Hero Section Styles */
-      .hero-section {
-        background: var(--primary-gradient);
-        color: white;
-        padding: 80px 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
-        opacity: 0.3;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
-      }
-
-      .title-font {
-        font-size: 3.5rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #fff, #f0f0f0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-align: center;
-        margin-bottom: 2rem;
-        line-height: 1.2;
-      }
-
-      /* Enhanced Cards */
-      .enhanced-card {
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        box-shadow: var(--card-shadow);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: all 0.3s ease;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
-      }
-
-      .enhanced-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--hover-shadow);
-      }
-
-      /* Gradient Backgrounds */
-      .gradient-bg-1 {
-        background: var(--primary-gradient);
-        color: white;
-      }
-
-      .gradient-bg-2 {
-        background: var(--secondary-gradient);
-        color: white;
-      }
-
-      .gradient-bg-3 {
-        background: var(--accent-gradient);
-        color: white;
-      }
-
-      /* Button Styles */
-      .btn-gradient {
-        background: var(--primary-gradient);
-        border: none;
-        border-radius: 50px;
-        padding: 12px 30px;
-        color: white;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-gradient:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        color: white;
-      }
-
-      .btn-gradient::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s;
-      }
-
-      .btn-gradient:hover::before {
-        left: 100%;
-      }
-
-      /* Author Links */
-      .author-link {
-        color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
-        position: relative;
-        transition: all 0.3s ease;
-      }
-
-      .author-link:hover {
-        color: white;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      }
-
-      .author-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 50%;
-        background-color: white;
-        transition: all 0.3s ease;
-      }
-
-      .author-link:hover::after {
-        width: 100%;
-        left: 0;
-      }
-
-      /* Highlights Section */
-      .highlights-section {
-        background: var(--secondary-gradient);
-        color: white;
-        border-radius: 25px;
-        padding: 40px;
-        margin: 40px 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .highlights-section::before {
-        content: '✨';
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        font-size: 3rem;
-        opacity: 0.3;
-      }
-
-      .highlight-item {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 20px;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        border-left: 4px solid rgba(255, 255, 255, 0.5);
-      }
-
-      .highlight-icon {
-        font-size: 1.5rem;
-        margin-right: 15px;
-        margin-top: 5px;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      /* Interactive Elements */
-      .interactive-demo {
-        background: var(--dark-gradient);
-        border-radius: 20px;
-        padding: 40px;
-        text-align: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .demo-placeholder {
-        width: 100%;
-        height: 300px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px dashed rgba(255, 255, 255, 0.3);
-        font-size: 1.2rem;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      /* Results Section */
-      .results-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-      }
-
-      .result-card {
-        background: white;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: var(--card-shadow);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-      }
-
-      .result-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--accent-gradient);
-      }
-
-      .result-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--hover-shadow);
-      }
-
-      .result-number {
-        font-size: 3rem;
-        font-weight: 700;
-        background: var(--primary-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 10px;
-      }
-
-      /* Method Illustration */
-      .method-flow {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 20px;
-        margin: 40px 0;
-      }
-
-      .method-step {
-        flex: 1;
-        min-width: 200px;
-        text-align: center;
-        padding: 20px;
-        background: white;
-        border-radius: 15px;
-        box-shadow: var(--card-shadow);
-        position: relative;
-        transition: all 0.3s ease;
-      }
-
-      .method-step:hover {
-        transform: scale(1.05);
-        box-shadow: var(--hover-shadow);
-      }
-
-      .method-step::after {
-        content: '→';
-        position: absolute;
-        right: -30px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 2rem;
-        color: var(--primary-color);
-        font-weight: bold;
-      }
-
-      .method-step:last-child::after {
-        display: none;
-      }
-
-      .step-icon {
-        width: 60px;
-        height: 60px;
-        background: var(--primary-gradient);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 15px;
-        color: white;
-        font-size: 1.5rem;
-      }
-
-      /* Footer Styling */
-      .footer {
-        background: var(--dark-gradient);
-        color: white;
-        padding: 40px 0;
-        margin-top: 80px;
-      }
-
-      /* Animation Classes */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease;
-      }
-
-      .fade-in-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .title-font {
-          font-size: 2.5rem;
-        }
-        
-        .method-flow {
-          flex-direction: column;
-        }
-        
-        .method-step::after {
-          content: '↓';
-          right: 50%;
-          transform: translateX(50%);
-          top: 100%;
-        }
-      }
-
-      /* Code styling */
-      code {
-        background: rgba(0,0,0,0.1);
-        padding: 15px;
-        border-radius: 10px;
-        font-family: 'Courier New', monospace;
-        display: block;
-        line-height: 1.4;
-      }
-    </style>
   </head>
 
   <body>
@@ -466,7 +110,7 @@
         <div class="row mt-3">
           <div class="col-12">
             <sup>1</sup>Southwest Jiaotong University &nbsp;&nbsp;
-            <sup>2</sup>Hong Kong University of Science and Technology (Guangzhou) 
+            <sup>2</sup>Kong University of Science and Technology (Guangzhou) 
           </div>
         </div>
         <div class="row mt-3">
@@ -475,10 +119,17 @@
           </div>
       </div>
       </div>
+      <!-- <div class="text-center" style="margin-top: 20px">
+        <h3 style="font-weight: bold">🎉🎉🎉 Accepted by KBS 2023 🎉🎉🎉</h3>
+      </div> -->
 
       <!-- links -->
       <div class="text-center">
         <div class="row justify-content-md-center" id="links">
+          <!--                <div class="col col-lg-2">-->
+          <!--                    <a id="paper" href="#">Paper</a>-->
+          <!--                </div>-->
+
           <!-- Arxiv Link -->
           <div class="col col-lg-2">
             <a id="arxiv" href="https://arxiv.org/abs/2508.14134">Paper</a>
@@ -486,7 +137,11 @@
           <!-- Code Link -->
           <div class="col col-lg-2">
             <a id="code" href="https://github.com/wuliwuxin/ERIS">Code</a>
+            <!-- <div style="margin-top: -0.5rem">(coming soon)</div> -->
           </div>
+          <!--                <div class="col col-lg-2">-->
+          <!--                    <a id="demo" href="https://huggingface.co/datasets/xingxm/SVG-Color-Emoji-Dataset">Dataset</a>-->
+          <!--                </div>-->
         </div>
       </div>
       <br />
@@ -530,7 +185,7 @@
             This obstacle arises from the way models inherently entangle domain-specific and label-relevant 
             features, resulting in spurious correlations. While feature disentanglement aims to solve this, 
             current methods are largely unguided, lacking the semantic direction required to isolate truly 
-            universal features. To address this, we propose an end-to-end <b>Energy-Regularized Information 
+            universal features. To address this, we propose an end-to-end <b style="color: #7e57c2">Energy-Regularized Information 
             for Shift-Robustness (ERIS)</b> framework to enable guided and reliable feature disentanglement. 
             The core idea is that effective disentanglement requires not only mathematical constraints but 
             also semantic guidance to anchor the separation process. ERIS incorporates three key mechanisms 
@@ -549,9 +204,28 @@
       <div class="text-center">
           <figure class="figure">
               <img src="assets/Model.png" class="figure-img img-fluid rounded" alt="method">
+              <!--                    <figcaption class="figure-caption">A caption for the above image.</figcaption>-->
           </figure>
       </div>
-      <p class="card-text">
+      <!-- <p class="card-text">
+          The proposed approach for multilabel medical image classification consists of three 
+          main stages, The first stage is to extract the initial features using the Conv module 
+          and then send two copies of them to the transformer branch and the CNN branch, respectively. 
+          In the second stage, the transformer branch adopts the label embedding and the MSS block 
+          of the MMAEF, while the CNN branch utilizes the MBR with nested inner and outer branches. The stacking of 
+          the MMAEF and MBR is equal to the number of layers in a vanilla transformer, denoted as. 
+          We believe that our model's number of layers is on par with the original architecture, 
+          which enhances structural reusability. Additionally, the widely recognized ViT model 
+          employs the transformer architecture for computer vision tasks and also utilizes a 
+          foundational version with 12 layers. Meanwhile, the IIM consists of the C2T and the T2C 
+          components to progressively fuse the feature maps in an interactive manner. Finally, 
+          after obtaining <i>T</i> features and <i>>C</i> features from the two branches, we investigate three 
+          fusion methods for their classification: direct addition of the branch scores, w
+          eighted addition of the branch scores (with weight coefficients ranging from 0 to 1), 
+          and classification based on the concatenation of the final feature maps from the two 
+          branches. 
+      </p> -->
+        <p class="card-text">
           The ERIS framework comprises three key components working in synergy: (1) <strong>Energy-Guided 
           Calibration</strong> mechanism that leverages domain-specific energy (DSE) and label-specific 
           energy (LSE) functions to provide semantic guidance for feature separation, (2) <strong>Weight-Level 
@@ -564,185 +238,194 @@
 </div>
 <br>
 
-<!-- Interactive Demo -->
+<!-- Demo -->
 <div class="card border-0">
   <div class="card-body">
-      <h2 class="card-title card-title-margin">Interactive Demo</h2>
-      <hr class="body-hr"/>
-      
-      <div class="demo-container">
-        <div class="demo-controls">
-          <div class="row align-items-center">
-            <div class="col-md-3">
-              <label for="dataset-select" class="form-label"><strong>Dataset:</strong></label>
-              <select class="form-select" id="dataset-select">
-                <option value="UCIHAR">UCIHAR</option>
-                <option value="EMG">EMG</option>
-                <option value="UniMiB-SHAR">UniMiB-SHAR</option>
-                <option value="Opportunity">Opportunity</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="target-domain" class="form-label"><strong>Target Domain:</strong></label>
-              <select class="form-select" id="target-domain">
-                <option value="0">Domain 0</option>
-                <option value="1">Domain 1</option>
-                <option value="2">Domain 2</option>
-                <option value="3">Domain 3</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="sample-size" class="form-label"><strong>Sample Size:</strong></label>
-              <input type="number" class="form-control" id="sample-size" value="100" min="10" max="1000">
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-demo w-100" id="run-inference" onclick="runInference()">
-                <i class="bi bi-play-circle"></i> Run Inference
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="demo-output" id="demo-output">
-          <div style="color: #68d391;">ERIS Inference Demo</div>
-          <div style="color: #a0aec0;">Click "Run Inference" to start the demo...</div>
-          <br>
-          <div style="color: #cbd5e0; font-size: 12px;">
-          Available operations:
-          • Feature extraction and disentanglement
-          • Energy-guided calibration
-          • Domain adaptation inference
-          • Performance evaluation
-          </div>
-        </div>
-      </div>
+      <h2 class="card-title card-title-margin">Demo</h2>
+      <!-- <hr class="body-hr"/>
+          <div>
+              <img id="prompt-sweep-img" src="assets/demo.gif"  width="80%">
+          </div> -->
   </div>
-</div>
-<br>d-card mb-5" data-aos="fade-up">
-        <div class="card-body p-0">
-          <div class="interactive-demo">
-            <h2 class="mb-4">Interactive Demonstration</h2>
-            <div class="demo-placeholder">
-              <div>
-                <i class="bi bi-play-circle" style="font-size: 3rem; display: block; margin-bottom: 15px;"></i>
-                Demo: Feature Disentanglement Visualization<br>
-                <small style="opacity: 0.7;">(Interactive demo coming soon)</small>
-              </div>
+  <br/>
+
+  <!-- Results -->
+  <div class="card border-0">
+    <div class="card-body">
+        <h2 class="card-title card-title-margin">More Results</h2>
+        <hr class="body-hr"/>
+
+        <!--start accordion-->
+        <!-- <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        #1. ChestX-ray11
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/CXR11.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
             </div>
-            <p class="mt-3" style="opacity: 0.8;">
-              Explore how ERIS separates domain-specific and label-relevant features in real-time
-            </p>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        #2. NIH ChestX-ray14
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/CXR14.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      #3. ChestX-Ray Ablation Result
+                  </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <figure class="figure">
+                          <img src="./assets/CXR_ab.png" class="figure-img img-fluid rounded" alt="method">
+                      </figure>
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        #4. Tongue Preprocessing
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <figure class="figure">
+                            <img src="./assets/tongue.png" class="figure-img img-fluid rounded" alt="method">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      #5. Tongue Visualization
+                  </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <figure class="figure">
+                          <img src="./assets/tongue_visual.png" class="figure-img img-fluid rounded" alt="method">
+                      </figure>
+                  </div>
+              </div>
+          </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      #6. Tongue Ablation Result
+                  </button>
+              </h2>
+              <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                      <figure class="figure">
+                          <img src="./assets/tongue_ab.png" class="figure-img img-fluid rounded" alt="method">
+                      </figure>
+                  </div>
+              </div>
+          </div>
+        </div> -->
+    </div>
+</div>
+<br>
 
       <!-- Citation -->
-      <div class="enhanced-card mb-5" data-aos="fade-up">
-        <div class="card-body p-5">
-          <h2 class="text-center mb-4" style="color: #667eea; font-weight: 700;">Citation</h2>
-          <div class="bg-light p-4 rounded">
+      <div class="card border-0">
+        <div class="card-body">
+          <h2 class="card-title card-title-margin">Citation</h2>
+          <p id="bibtex" class="card-text" style="border: #1a1c20 1px">
             <code>
-@article{wu2025eris,<br />
-&nbsp;&nbsp;title={ERIS: An Energy-Guided Feature Disentanglement Framework for Out-of-Distribution Time Series Classification},<br />
-&nbsp;&nbsp;author={Wu, Xin and Teng, Fei and Zhang, Ji and Li, Xingwang and Liang, Yuxuan},<br />
-&nbsp;&nbsp;journal={arXiv preprint arXiv:2508.14134},<br />
-&nbsp;&nbsp;year={2025}<br />
-}
+              @article{wu2025eris,<br />
+              &nbsp;&nbsp;title={ERIS: An Energy-Guided Feature Disentanglement Framework for Out-of-Distribution Time Series Classification},<br />
+              &nbsp;&nbsp;author={Wu, Xin and Teng, Fei and Zhang, Ji and Li, Xingwang and Liang, Yuxuan},<br />
+              &nbsp;&nbsp;journal={arXiv preprint arXiv:2508.14134},<br />
+              &nbsp;&nbsp;year={2025}<br />
+            }
             </code>
-          </div>
-          
-          <div class="text-center mt-4">
-            <button type="button" class="btn-gradient" data-bs-toggle="modal" data-bs-target="#citationModal">
-              <i class="bi bi-clipboard"></i> Copy Citation
-            </button>
+          </p>
+
+          <!-- Bibtex (Button trigger modal)-->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onclick="copyText()"
+          >
+            Copy BibTex
+          </button>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Bibtex
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="bibtex modal-body">Copy Success!</div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <br />
     </main>
 
-    <!-- Citation Modal -->
-    <div class="modal fade" id="citationModal" tabindex="-1" aria-labelledby="citationModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="citationModalLabel">Citation Copied!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>The citation has been copied to your clipboard.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-12 text-center">
-            <p class="mb-0" style="font-size: 1.1rem; font-weight: 500;">
-              ERIS: An Energy-Guided Feature Disentanglement Framework
-            </p>
-            <p class="mt-2 mb-0" style="opacity: 0.7;">
-              Empowering reliable out-of-distribution time series classification
+          <!-- left layout -->
+          <div class="col-12 col-md-6 text-md-start text-center">
+            <p class="footer-title mb-0">
+              An Energy-Guided Feature Disentanglement Framework
             </p>
           </div>
         </div>
       </div>
     </footer>
-
-    <script>
-      // Initialize AOS animations
-      AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100
-      });
-
-      // Copy citation functionality
-      function copyText() {
-        const citation = `@article{wu2025eris,
-  title={ERIS: An Energy-Guided Feature Disentanglement Framework for Out-of-Distribution Time Series Classification},
-  author={Wu, Xin and Teng, Fei and Zhang, Ji and Li, Xingwang and Liang, Yuxuan},
-  journal={arXiv preprint arXiv:2508.14134},
-  year={2025}
-}`;
-        
-        navigator.clipboard.writeText(citation).then(() => {
-          console.log('Citation copied to clipboard');
-        }).catch(err => {
-          console.error('Failed to copy citation: ', err);
-        });
-      }
-
-      // Add click event to copy button
-      document.querySelector('[data-bs-target="#citationModal"]').addEventListener('click', copyText);
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-
-      // Add some interactive hover effects
-      document.querySelectorAll('.result-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) scale(1)';
-        });
-      });
-    </script>
+  </body>
+</html>
