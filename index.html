@@ -162,7 +162,7 @@
             </li>
             <li class="mb-2">
               <strong>Weight-Level Orthogonality:</strong>
-              We enforce structural independence between domain-specific and label-relevant features at the <b>parameter level</b>, ensuring robust disentanglement.
+              We enforce structural independence between domain-specific and label-relevant features at the <b>weight-level orthogonality</b>, ensuring robust disentanglement.
             </li>
             <li>
               <strong>Adversarial Generalization:</strong> We enhance robustness through <b>structured perturbations and domain alignment</b>, achieving superior OOD generalization.
@@ -207,24 +207,6 @@
               <!--                    <figcaption class="figure-caption">A caption for the above image.</figcaption>-->
           </figure>
       </div>
-      <!-- <p class="card-text">
-          The proposed approach for multilabel medical image classification consists of three 
-          main stages, The first stage is to extract the initial features using the Conv module 
-          and then send two copies of them to the transformer branch and the CNN branch, respectively. 
-          In the second stage, the transformer branch adopts the label embedding and the MSS block 
-          of the MMAEF, while the CNN branch utilizes the MBR with nested inner and outer branches. The stacking of 
-          the MMAEF and MBR is equal to the number of layers in a vanilla transformer, denoted as. 
-          We believe that our model's number of layers is on par with the original architecture, 
-          which enhances structural reusability. Additionally, the widely recognized ViT model 
-          employs the transformer architecture for computer vision tasks and also utilizes a 
-          foundational version with 12 layers. Meanwhile, the IIM consists of the C2T and the T2C 
-          components to progressively fuse the feature maps in an interactive manner. Finally, 
-          after obtaining <i>T</i> features and <i>>C</i> features from the two branches, we investigate three 
-          fusion methods for their classification: direct addition of the branch scores, w
-          eighted addition of the branch scores (with weight coefficients ranging from 0 to 1), 
-          and classification based on the concatenation of the final feature maps from the two 
-          branches. 
-      </p> -->
         <p class="card-text">
           The ERIS framework comprises three key components working in synergy: (1) <strong>Energy-Guided 
           Calibration</strong> mechanism that leverages domain-specific energy (DSE) and label-specific 
