@@ -168,6 +168,32 @@
               <strong>Comprehensive Evaluation and Performance:</strong> We extensively evaluated <b>on three distinct datasets: ChestX-ray11, NIH ChestX-ray14, and our in-house TCMTD</b>.
             </li>
           </ul> -->
+          <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="highlight-item">
+              <div class="highlight-icon">🎯</div>
+              <div>
+                <strong>Energy-Guided Calibration:</strong> Novel semantic guidance mechanism that provides crucial direction for feature separation, enabling self-calibration capabilities.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="highlight-item">
+              <div class="highlight-icon">⚖️</div>
+              <div>
+                <strong>Weight-Level Orthogonality:</strong> Enforces structural independence between domain-specific and label-relevant features at the parameter level.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="highlight-item">
+              <div class="highlight-icon">🛡️</div>
+              <div>
+                <strong>Adversarial Generalization:</strong> Enhances robustness by injecting structured perturbations to learn invariant representations.
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
       <br />
@@ -204,6 +230,13 @@
             Its robust generalization ability makes it applicable to other medical multilabel image 
             classification tasks.
           </p> -->
+          An ideal time series classification (TSC) should be able to capture invariant representations, 
+          but achieving reliable performance on out-of-distribution (OOD) data remains a core obstacle. 
+          This obstacle arises from the way models inherently entangle domain-specific and label-relevant features, 
+          resulting in spurious correlations. While feature disentanglement aims to solve this, current methods are 
+          largely unguided, lacking the semantic direction required to isolate truly universal features. 
+          To address this, we propose an end-to-end Energy-Regularized Information for Shift-Robustness (ERIS) 
+          framework to enable guided and reliable feature disentanglement.
         </div>
       </div>
       <br />
