@@ -2,7 +2,7 @@
   "model_info": {
     "accuracy": 94.24,
     "ece": 0.0271,
-    "dataset": "UCI-HAR",
+    "dataset": "UCIHAR",
     "activities": [
       "Walking",
       "Walking_Upstairs",

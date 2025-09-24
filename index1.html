@@ -78,28 +78,28 @@
             ><sup>1</sup>
           </div>
           <div class="col-12 col-md-2">
-            
+            <a
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=5CVB6eYAAAAJ&view_op=list_works&sortby=pubdate"
               >Fei Teng<sup>*</sup></a>
               <sup>1</sup>
           </div>
           <div class="col-12 col-md-2">
-            
+            <a
               class="link"
               href="https://jimzai.github.io/"
               >Ji Zhang</a>
               <sup>1</sup>
           </div>
           <div class="col-12 col-md-2">
-            
+            <a
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=EnmTzFQAAAAJ"
               >Xingwang Li</a>
               <sup>1</sup>
           </div>
-          <div class="col-12 col-md-2">
-            
+            <div class="col-12 col-md-2">
+            <a
               class="link"
               href="https://yuxuanliang.com/"
               >Yuxuan Liang</a>
@@ -110,7 +110,7 @@
         <div class="row mt-3">
           <div class="col-12">
             <sup>1</sup>Southwest Jiaotong University &nbsp;&nbsp;
-            <sup>2</sup>Hong Kong University of Science and Technology (Guangzhou) 
+            <sup>2</sup>Kong University of Science and Technology (Guangzhou) 
           </div>
         </div>
         <div class="row mt-3">
@@ -119,10 +119,17 @@
           </div>
       </div>
       </div>
+      <!-- <div class="text-center" style="margin-top: 20px">
+        <h3 style="font-weight: bold">🎉🎉🎉 Accepted by KBS 2023 🎉🎉🎉</h3>
+      </div> -->
 
       <!-- links -->
       <div class="text-center">
         <div class="row justify-content-md-center" id="links">
+          <!--                <div class="col col-lg-2">-->
+          <!--                    <a id="paper" href="#">Paper</a>-->
+          <!--                </div>-->
+
           <!-- Arxiv Link -->
           <div class="col col-lg-2">
             <a id="arxiv" href="https://arxiv.org/abs/2508.14134">Paper</a>
@@ -130,7 +137,11 @@
           <!-- Code Link -->
           <div class="col col-lg-2">
             <a id="code" href="https://github.com/wuliwuxin/ERIS">Code</a>
+            <!-- <div style="margin-top: -0.5rem">(coming soon)</div> -->
           </div>
+          <!--                <div class="col col-lg-2">-->
+          <!--                    <a id="demo" href="https://huggingface.co/datasets/xingxm/SVG-Color-Emoji-Dataset">Dataset</a>-->
+          <!--                </div>-->
         </div>
       </div>
       <br />
@@ -193,6 +204,7 @@
       <div class="text-center">
           <figure class="figure">
               <img src="assets/Model.png" class="figure-img img-fluid rounded" alt="method">
+              <!--                    <figcaption class="figure-caption">A caption for the above image.</figcaption>-->
           </figure>
       </div>
         <p class="card-text">
@@ -212,205 +224,12 @@
 <div class="card border-0">
   <div class="card-body">
       <h2 class="card-title card-title-margin">Demo</h2>
-      <hr class="body-hr"/>
-      
-      <!-- Demo Statistics -->
-      <div class="row mb-4">
-          <div class="col-12">
-              <div class="alert alert-info" role="alert">
-                  <h5 class="alert-heading"><i class="bi bi-bar-chart-fill"></i> ERIS Performance on UCI-HAR Dataset</h5>
-                  <p class="mb-1"><strong>Accuracy:</strong> 94.24% | <strong>ECE:</strong> 0.0271 | <strong>Activities:</strong> 6 types</p>
-                  <hr>
-                  <p class="mb-0">Real-time human activity recognition with energy-guided feature disentanglement</p>
-              </div>
-          </div>
-      </div>
-      
-      <!-- JSON Data Display -->
-      <div class="row">
-          <div class="col-12">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                  <h5 class="mb-0">ERIS Real Demo Data</h5>
-                  <button class="btn btn-sm btn-outline-primary" onclick="copyDemoData()">
-                      <i class="bi bi-clipboard"></i> Copy JSON
-                  </button>
-              </div>
-              <div class="bg-light p-3 rounded">
-                  <pre><code id="demo-json" class="language-json" style="max-height: 400px; overflow-y: auto;">{
-  "model_info": {
-    "accuracy": 94.24,
-    "ece": 0.0271,
-    "dataset": "UCI-HAR",
-    "activities": ["Walking", "Walking_Upstairs", "Walking_Downstairs", "Sitting", "Standing", "Laying"]
-  },
-  "performance": {
-    "accuracy": 0.91667,
-    "total_samples": 12,
-    "correct_samples": 11
-  },
-  "real_predictions": [
-    {
-      "id": 0,
-      "true_activity": "Walking",
-      "predicted_activity": "Walking",
-      "confidence": 0.94,
-      "probabilities": {
-        "Walking": 0.94,
-        "Walking_Upstairs": 0.03,
-        "Walking_Downstairs": 0.02,
-        "Sitting": 0.005,
-        "Standing": 0.003,
-        "Laying": 0.002
-      },
-      "correct": true,
-      "domain": 0,
-      "feature_2d": [-1.2, 0.8],
-      "time_series": [0.12, -0.34, 0.78, -0.45, 0.23, 0.89, -0.67, 0.34, -0.12, 0.56]
-    },
-    {
-      "id": 1,
-      "true_activity": "Walking_Upstairs",
-      "predicted_activity": "Walking_Upstairs",
-      "confidence": 0.89,
-      "probabilities": {
-        "Walking": 0.08,
-        "Walking_Upstairs": 0.89,
-        "Walking_Downstairs": 0.02,
-        "Sitting": 0.003,
-        "Standing": 0.005,
-        "Laying": 0.002
-      },
-      "correct": true,
-      "domain": 1,
-      "feature_2d": [-0.8, 1.3],
-      "time_series": [0.45, -0.23, 1.12, -0.78, 0.34, 1.45, -0.89, 0.67, -0.23, 0.91]
-    },
-    {
-      "id": 2,
-      "true_activity": "Walking_Downstairs",
-      "predicted_activity": "Walking_Downstairs",
-      "confidence": 0.92,
-      "probabilities": {
-        "Walking": 0.06,
-        "Walking_Upstairs": 0.01,
-        "Walking_Downstairs": 0.92,
-        "Sitting": 0.005,
-        "Standing": 0.003,
-        "Laying": 0.002
-      },
-      "correct": true,
-      "domain": 2,
-      "feature_2d": [-1.1, -0.6],
-      "time_series": [0.23, -0.67, 0.89, -1.23, 0.45, 0.78, -1.34, 0.56, -0.89, 0.34]
-    },
-    {
-      "id": 3,
-      "true_activity": "Sitting",
-      "predicted_activity": "Sitting",
-      "confidence": 0.96,
-      "probabilities": {
-        "Walking": 0.01,
-        "Walking_Upstairs": 0.008,
-        "Walking_Downstairs": 0.012,
-        "Sitting": 0.96,
-        "Standing": 0.008,
-        "Laying": 0.002
-      },
-      "correct": true,
-      "domain": 3,
-      "feature_2d": [0.3, -0.8],
-      "time_series": [0.05, -0.08, 0.12, -0.06, 0.03, 0.09, -0.11, 0.07, -0.04, 0.08]
-    },
-    {
-      "id": 4,
-      "true_activity": "Standing",
-      "predicted_activity": "Standing",
-      "confidence": 0.88,
-      "probabilities": {
-        "Walking": 0.02,
-        "Walking_Upstairs": 0.015,
-        "Walking_Downstairs": 0.018,
-        "Sitting": 0.067,
-        "Standing": 0.88,
-        "Laying": 0.002
-      },
-      "correct": true,
-      "domain": 0,
-      "feature_2d": [0.5, -0.2],
-      "time_series": [0.02, -0.05, 0.08, -0.03, 0.01, 0.06, -0.09, 0.04, -0.02, 0.05]
-    },
-    {
-      "id": 5,
-      "true_activity": "Laying",
-      "predicted_activity": "Laying",
-      "confidence": 0.97,
-      "probabilities": {
-        "Walking": 0.008,
-        "Walking_Upstairs": 0.005,
-        "Walking_Downstairs": 0.007,
-        "Sitting": 0.008,
-        "Standing": 0.002,
-        "Laying": 0.97
-      },
-      "correct": true,
-      "domain": 1,
-      "feature_2d": [1.2, -1.1],
-      "time_series": [0.01, -0.02, 0.03, -0.01, 0.008, 0.02, -0.03, 0.015, -0.008, 0.02]
-    }
-  ],
-  "feature_analysis": {
-    "Walking": [[-1.2, 0.8], [-0.9, 0.6]],
-    "Walking_Upstairs": [[-0.8, 1.3], [-0.7, 1.1]],
-    "Walking_Downstairs": [[-1.1, -0.6], [-1.0, -0.5]],
-    "Sitting": [[0.3, -0.8], [0.4, -0.7]],
-    "Standing": [[0.5, -0.2], [0.6, -0.1]],
-    "Laying": [[1.2, -1.1], [1.3, -1.0]]
-  }
-}</code></pre>
-              </div>
-          </div>
-      </div>
-      
-      <!-- Interactive Analysis -->
-      <div class="row mt-4">
-          <div class="col-12">
-              <h5>Key Insights from Demo Results:</h5>
-              <ul class="list-unstyled">
-                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> <strong>High Accuracy:</strong> 94.24% overall accuracy with robust performance across all activity types</li>
-                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> <strong>Low Calibration Error:</strong> ECE of 0.0271 indicates excellent confidence calibration</li>
-                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> <strong>Domain Robustness:</strong> Consistent performance across different domains (0-3)</li>
-                  <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> <strong>Feature Separation:</strong> Clear feature space separation between dynamic and static activities</li>
-              </ul>
-          </div>
-      </div>
+      <!-- <hr class="body-hr"/>
+          <div>
+              <img id="prompt-sweep-img" src="assets/demo.gif"  width="80%">
+          </div> -->
   </div>
-</div>
-
-<script>
-function copyDemoData() {
-    const content = document.getElementById('demo-json').textContent;
-    
-    navigator.clipboard.writeText(content).then(function() {
-        // Show success feedback
-        const button = event.target.closest('button');
-        const originalText = button.innerHTML;
-        button.innerHTML = '<i class="bi bi-check"></i> Copied!';
-        button.classList.remove('btn-outline-primary');
-        button.classList.add('btn-success');
-        
-        setTimeout(() => {
-            button.innerHTML = originalText;
-            button.classList.remove('btn-success');
-            button.classList.add('btn-outline-primary');
-        }, 2000);
-    }).catch(function(err) {
-        console.error('Could not copy text: ', err);
-        alert('Failed to copy JSON content to clipboard.');
-    });
-}
-</script>
-
-<br>
+  <br/>
 
   <!-- Results -->
   <div class="card border-0">
@@ -483,7 +302,7 @@ function copyDemoData() {
             <div class="accordion-item">
               <h2 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#collapseFive" aria-expanded="false" aria-cols="collapseFive">
+                          data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                       #5. Tongue Visualization
                   </button>
               </h2>
