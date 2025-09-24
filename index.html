@@ -226,45 +226,40 @@
       <h2 class="card-title card-title-margin">Demo</h2>
       <hr class="body-hr"/>
       
-      <!-- JSON File Selector -->
+      <!-- Load JSON Button -->
       <div class="row mb-3">
           <div class="col-12">
               <div class="d-flex align-items-center gap-3">
-                  <label for="jsonFileSelect" class="form-label mb-0"><strong>Select JSON File:</strong></label>
-                  <select class="form-select" id="jsonFileSelect" style="max-width: 300px;" onchange="loadSelectedJson()">
-                      <option value="">-- Choose a JSON file --</option>
-                      <option value="data/results.json">Experimental Results</option>
-                      <option value="data/config.json">Model Configuration</option>
-                      <option value="data/datasets.json">Dataset Performance</option>
-                  </select>
-                  <button class="btn btn-primary" onclick="loadCustomJson()">Load Custom JSON</button>
+                  <button class="btn btn-primary" onclick="loadERISDemo()">
+                      <i class="bi bi-file-earmark-text"></i> Load ERIS Demo Data
+                  </button>
+                  <button class="btn btn-outline-secondary" onclick="refreshDemo()">
+                      <i class="bi bi-arrow-clockwise"></i> Refresh
+                  </button>
               </div>
           </div>
       </div>
-      
-      <!-- Custom File Input (Hidden) -->
-      <input type="file" id="customJsonFile" accept=".json" style="display: none;" onchange="handleCustomJsonFile(event)">
       
       <!-- JSON Display Area -->
       <div class="row">
           <div class="col-12">
               <div id="jsonContainer" class="bg-light p-3 rounded" style="min-height: 200px; display: none;">
                   <div class="d-flex justify-content-between align-items-center mb-2">
-                      <h5 id="jsonTitle" class="mb-0">JSON Data</h5>
+                      <h5 id="jsonTitle" class="mb-0">ERIS Demo Data</h5>
                       <button class="btn btn-sm btn-outline-primary" onclick="copyJsonContent()">
                           <i class="bi bi-clipboard"></i> Copy JSON
                       </button>
                   </div>
-                  <pre><code id="jsonContent" class="language-json"></code></pre>
+                  <pre><code id="jsonContent" class="language-json" style="max-height: 500px; overflow-y: auto;"></code></pre>
               </div>
               <div id="loadingMessage" class="text-center py-4" style="display: none;">
                   <div class="spinner-border text-primary" role="status">
                       <span class="visually-hidden">Loading...</span>
                   </div>
-                  <p class="mt-2">Loading JSON file...</p>
+                  <p class="mt-2">Loading ERIS demo data...</p>
               </div>
               <div id="errorMessage" class="alert alert-warning" role="alert" style="display: none;">
-                  Please select a JSON file to display the data.
+                  Click "Load ERIS Demo Data" to display the demo results.
               </div>
           </div>
       </div>
@@ -272,59 +267,28 @@
 </div>
 
 <script>
-// JSON loading and display functions
-async function loadSelectedJson() {
-    const select = document.getElementById('jsonFileSelect');
-    const filePath = select.value;
-    
-    if (!filePath) {
-        hideJsonDisplay();
-        return;
-    }
-    
+// ERIS Demo JSON loading functions
+async function loadERISDemo() {
     showLoadingMessage();
     
     try {
-        const response = await fetch(filePath);
+        const response = await fetch('eris_real_demo.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const jsonData = await response.json();
-        displayJsonData(jsonData, select.options[select.selectedIndex].text);
+        displayJsonData(jsonData, 'ERIS Demo Data');
     } catch (error) {
-        showErrorMessage(`Error loading JSON file: ${error.message}`);
+        showErrorMessage(`Error loading ERIS demo data: ${error.message}. Please make sure 'eris_real_demo.json' file is in the same directory as this HTML file.`);
         console.error('Error loading JSON:', error);
     }
 }
 
-function loadCustomJson() {
-    document.getElementById('customJsonFile').click();
-}
-
-function handleCustomJsonFile(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    
-    if (file.type !== 'application/json') {
-        showErrorMessage('Please select a valid JSON file.');
-        return;
-    }
-    
-    showLoadingMessage();
-    
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            const jsonData = JSON.parse(e.target.result);
-            displayJsonData(jsonData, file.name);
-            // Reset the select dropdown
-            document.getElementById('jsonFileSelect').value = '';
-        } catch (error) {
-            showErrorMessage(`Error parsing JSON file: ${error.message}`);
-            console.error('Error parsing JSON:', error);
-        }
-    };
-    reader.readAsText(file);
+function refreshDemo() {
+    hideJsonDisplay();
+    hideLoadingMessage();
+    document.getElementById('errorMessage').style.display = 'block';
+    document.getElementById('errorMessage').textContent = 'Click "Load ERIS Demo Data" to display the demo results.';
 }
 
 function displayJsonData(data, title) {
