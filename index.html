@@ -78,28 +78,28 @@
             ><sup>1</sup>
           </div>
           <div class="col-12 col-md-2">
-            <a
+            
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=5CVB6eYAAAAJ&view_op=list_works&sortby=pubdate"
               >Fei Teng<sup>*</sup></a>
               <sup>1</sup>
           </div>
           <div class="col-12 col-md-2">
-            <a
+            
               class="link"
               href="https://jimzai.github.io/"
               >Ji Zhang</a>
               <sup>1</sup>
           </div>
           <div class="col-12 col-md-2">
-            <a
+            
               class="link"
               href="https://scholar.google.com.hk/citations?hl=zh-CN&user=EnmTzFQAAAAJ"
               >Xingwang Li</a>
               <sup>1</sup>
           </div>
             <div class="col-12 col-md-2">
-            <a
+            
               class="link"
               href="https://yuxuanliang.com/"
               >Yuxuan Liang</a>
@@ -120,7 +120,7 @@
       </div>
       </div>
       <!-- <div class="text-center" style="margin-top: 20px">
-        <h3 style="font-weight: bold">🎉🎉🎉 Accepted by KBS 2023 🎉🎉🎉</h3>
+        <h3 style="font-weight: bold">ðŸŽ‰ðŸŽ‰ðŸŽ‰ Accepted by KBS 2023 ðŸŽ‰ðŸŽ‰ðŸŽ‰</h3>
       </div> -->
 
       <!-- links -->
@@ -153,7 +153,7 @@
             class="card-title text-center"
             style="font-size: 2rem; margin-bottom: 1.5rem"
           >
-            ✨ Highlights
+            âœ¨ Highlights
           </h2>
           <hr class="body-hr" />
           <ul class="list-unstyled">
@@ -224,12 +224,179 @@
 <div class="card border-0">
   <div class="card-body">
       <h2 class="card-title card-title-margin">Demo</h2>
-      <!-- <hr class="body-hr"/>
-          <div>
-              <img id="prompt-sweep-img" src="assets/demo.gif"  width="80%">
-          </div> -->
+      <hr class="body-hr"/>
+      
+      <!-- JSON File Selector -->
+      <div class="row mb-3">
+          <div class="col-12">
+              <div class="d-flex align-items-center gap-3">
+                  <label for="jsonFileSelect" class="form-label mb-0"><strong>Select JSON File:</strong></label>
+                  <select class="form-select" id="jsonFileSelect" style="max-width: 300px;" onchange="loadSelectedJson()">
+                      <option value="">-- Choose a JSON file --</option>
+                      <option value="data/results.json">Experimental Results</option>
+                      <option value="data/config.json">Model Configuration</option>
+                      <option value="data/datasets.json">Dataset Performance</option>
+                  </select>
+                  <button class="btn btn-primary" onclick="loadCustomJson()">Load Custom JSON</button>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Custom File Input (Hidden) -->
+      <input type="file" id="customJsonFile" accept=".json" style="display: none;" onchange="handleCustomJsonFile(event)">
+      
+      <!-- JSON Display Area -->
+      <div class="row">
+          <div class="col-12">
+              <div id="jsonContainer" class="bg-light p-3 rounded" style="min-height: 200px; display: none;">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h5 id="jsonTitle" class="mb-0">JSON Data</h5>
+                      <button class="btn btn-sm btn-outline-primary" onclick="copyJsonContent()">
+                          <i class="bi bi-clipboard"></i> Copy JSON
+                      </button>
+                  </div>
+                  <pre><code id="jsonContent" class="language-json"></code></pre>
+              </div>
+              <div id="loadingMessage" class="text-center py-4" style="display: none;">
+                  <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <p class="mt-2">Loading JSON file...</p>
+              </div>
+              <div id="errorMessage" class="alert alert-warning" role="alert" style="display: none;">
+                  Please select a JSON file to display the data.
+              </div>
+          </div>
+      </div>
   </div>
-  <br/>
+</div>
+
+<script>
+// JSON loading and display functions
+async function loadSelectedJson() {
+    const select = document.getElementById('jsonFileSelect');
+    const filePath = select.value;
+    
+    if (!filePath) {
+        hideJsonDisplay();
+        return;
+    }
+    
+    showLoadingMessage();
+    
+    try {
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        displayJsonData(jsonData, select.options[select.selectedIndex].text);
+    } catch (error) {
+        showErrorMessage(`Error loading JSON file: ${error.message}`);
+        console.error('Error loading JSON:', error);
+    }
+}
+
+function loadCustomJson() {
+    document.getElementById('customJsonFile').click();
+}
+
+function handleCustomJsonFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    if (file.type !== 'application/json') {
+        showErrorMessage('Please select a valid JSON file.');
+        return;
+    }
+    
+    showLoadingMessage();
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const jsonData = JSON.parse(e.target.result);
+            displayJsonData(jsonData, file.name);
+            // Reset the select dropdown
+            document.getElementById('jsonFileSelect').value = '';
+        } catch (error) {
+            showErrorMessage(`Error parsing JSON file: ${error.message}`);
+            console.error('Error parsing JSON:', error);
+        }
+    };
+    reader.readAsText(file);
+}
+
+function displayJsonData(data, title) {
+    const container = document.getElementById('jsonContainer');
+    const titleElement = document.getElementById('jsonTitle');
+    const contentElement = document.getElementById('jsonContent');
+    
+    titleElement.textContent = title;
+    contentElement.textContent = JSON.stringify(data, null, 2);
+    
+    hideLoadingMessage();
+    hideErrorMessage();
+    container.style.display = 'block';
+}
+
+function copyJsonContent() {
+    const content = document.getElementById('jsonContent').textContent;
+    
+    navigator.clipboard.writeText(content).then(function() {
+        // Show success feedback
+        const button = event.target.closest('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="bi bi-check"></i> Copied!';
+        button.classList.remove('btn-outline-primary');
+        button.classList.add('btn-success');
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-outline-primary');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+        alert('Failed to copy JSON content to clipboard.');
+    });
+}
+
+function showLoadingMessage() {
+    document.getElementById('loadingMessage').style.display = 'block';
+    hideJsonDisplay();
+    hideErrorMessage();
+}
+
+function hideLoadingMessage() {
+    document.getElementById('loadingMessage').style.display = 'none';
+}
+
+function showErrorMessage(message) {
+    const errorDiv = document.getElementById('errorMessage');
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+    hideLoadingMessage();
+    hideJsonDisplay();
+}
+
+function hideErrorMessage() {
+    document.getElementById('errorMessage').style.display = 'none';
+}
+
+function hideJsonDisplay() {
+    document.getElementById('jsonContainer').style.display = 'none';
+}
+
+// Initialize the demo section
+document.addEventListener('DOMContentLoaded', function() {
+    // Show the default message
+    hideJsonDisplay();
+    document.getElementById('errorMessage').style.display = 'block';
+});
+</script>
+
+<br>
 
   <!-- Results -->
   <div class="card border-0">
